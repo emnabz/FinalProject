@@ -74,7 +74,15 @@ object BankDataAnalysisDF {
     data
   }
   // visualization
-  def visualizeTransactionPatterns(data: DataFrame): DataFrame = {
+  private def visualizeTransactionPatterns(data: DataFrame): DataFrame = {
+    data
+  }
+  // used a plotting library to create visualizations for presenting the project's findings and insights.
+  def createVisualization(data: DataFrame): DataFrame = {
+    data
+  }
+  //create presentation in powerpoint or jupyter notebooks to showcase the analysis and results.
+  def createPresentation(data: DataFrame): DataFrame = {
     data
   }
 
@@ -103,6 +111,11 @@ object BankDataAnalysisDF {
     transaction_patterns.show()
     identifyTransactionPatterns(data_clean).show()
     visualizeTransactionPatterns(data_clean).show()
+    createVisualization(data_clean)
+    val transactionAmounts = data_clean.groupBy("customer_id").agg(sum("amount").alias("total_amount"))
+    println("Transaction Amounts:")
+    transactionAmounts.show()
+    createPresentation(data_clean)
 
   }
 }
